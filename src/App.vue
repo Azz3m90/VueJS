@@ -33,6 +33,12 @@
  <h1 v-else-if="num < 0"> the number is negative</h1>
  <h1 v-else-if="num > 0"> the number is positive</h1>
  <h1 v-else>the num is not a number</h1>
+<template v-if="display">
+ <h1>Azzam</h1>
+ <h1>Aziz</h1>
+ <h1>Ali</h1>
+ </template>
+ <h2 v-show="showElement">v-show Element</h2>
 </template>
 
 <style scoped>
@@ -97,6 +103,8 @@ export default {
 
       },*/
       num:"fdfd",
+      display:true,
+      showElement:true,
     };
   }
 }
