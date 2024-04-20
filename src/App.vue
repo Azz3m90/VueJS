@@ -2,7 +2,7 @@
 
 <template>
   <!--Text interpolation -->
- <div>Hello {{ name }}  </div> <br>
+ <!--<div>Hello {{ name }}  </div> <br>
  <div v-text="channel"></div><br>
  <h3 v-text="facebook"></h3><br>
  <p v-html="channel_html"></p><br>
@@ -27,8 +27,12 @@
  }">Inline Style</h2><br>
   <h2 v-bind:style="styleObject">style object</h2><br>
   <div v-bind:style="[baseStyleObject , successStyleObject]">success style array</div><br>
-  <div v-bind:style="[baseStyleObject , dangerStyleObject]">danger style array</div><br>
- 
+  <p>v-bind shorthand:</p>
+  <div :style="[baseStyleObject , dangerStyleObject]">danger style array</div><br>-->
+ <h1 v-if="num === 0 ">the number is Zero</h1>
+ <h1 v-else-if="num < 0"> the number is negative</h1>
+ <h1 v-else-if="num > 0"> the number is positive</h1>
+ <h1 v-else>the num is not a number</h1>
 </template>
 
 <style scoped>
@@ -56,6 +60,7 @@ export default {
   name:"App",
   data(){
     return {
+      /*
       name:'Azzam',
       channel:'Eng.Azzam Aziz Ali',
       facebook:'Azzam Aziz Ali',
@@ -90,7 +95,8 @@ export default {
         backgroundColor:'red',
         border:'1px solid darkred',
 
-      },
+      },*/
+      num:"fdfd",
     };
   }
 }
