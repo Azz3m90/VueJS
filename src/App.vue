@@ -28,7 +28,7 @@
   <h2 v-bind:style="styleObject">style object</h2><br>
   <div v-bind:style="[baseStyleObject , successStyleObject]">success style array</div><br>
   <p>v-bind shorthand:</p>
-  <div :style="[baseStyleObject , dangerStyleObject]">danger style array</div><br>-->
+  <div :style="[baseStyleObject , dangerStyleObject]">danger style array</div><br>
  <h1 v-if="num === 0 ">the number is Zero</h1>
  <h1 v-else-if="num < 0"> the number is negative</h1>
  <h1 v-else-if="num > 0"> the number is positive</h1>
@@ -39,6 +39,61 @@
  <h1>Ali</h1>
  </template>
  <h2 v-show="showElement">v-show Element</h2>
+
+ <template v-for="name in names "::key="name">
+  <h3 v-if="name === 'Azzam'">
+
+{{ name }}
+  </h3>
+ </template><br>
+ <h1>{{ 1 + 6 + 9 }}</h1>
+ <h1>
+  Adding function {{ add(15, -10 ,25) }}<br>
+  Multipleier method - {{ multiplier() }}</h1> -->
+  <h1>Event Handling:</h1>
+  <h1>{{ name }}</h1>
+  <div>
+    <button v-on:mouseover="name = 'Ali'">click me </button>
+  </div>
+  <h1>{{ counter }}</h1>
+  <div>
+    <button v-on:click="counter += 1">Increment </button>
+    <button v-on:click="counter -= 1">Decrement </button>
+    short hand event listener:
+    <button @click="increment">Increment by function</button>
+    <button @click="decrement">Decrement by function </button>
+  </div>
+  <div ><pre>
+    {{ JSON.stringify(formValues, null,2) }}
+  </pre></div>
+<form action="" method="post">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" v-model="formValues.name "/>
+  </div>
+  <div>
+    <label for="profile">Name:</label>
+    <textarea type="text" id="profile" v-model="formValues.summaryProfile "/>
+  </div>
+  <div>
+    <label for="country">Country:</label>
+    <select type="text"  id="country" v-model="formValues.country ">
+      <option value="SYR">Syria</option>
+      <option value="UAE">United Emarites</option>
+      <option value="KSA">Saudi Kindom</option>
+      <option value="BLE">Belgium</option>
+    </select>>
+  </div>
+  <div>
+    <label for="job-location">Job Location:</label>
+    <select type="text" multiple id="job-location" v-model="formValues.jobLocation ">
+      <option value="SYR">Syria</option>
+      <option value="UAE">United Emarites</option>
+      <option value="KSA">Saudi Kindom</option>
+      <option value="BLE">Belgium</option>
+    </select>>
+  </div>
+</form>
 </template>
 
 <style scoped>
@@ -59,6 +114,9 @@
   }
   .soldout{
     color: red;
+  }
+  h1,h2,h3,h3{
+    display: block;
   }
 </style>
 <script>
@@ -105,7 +163,32 @@ export default {
       num:"fdfd",
       display:true,
       showElement:true,
+      
+     names:['Azzam', 'Aziz', 'Ali'],
+     baseMultiplier:5,
+     name:"Azzam",
+     counter:1,
+     formValues:{
+      name:'',
+      summaryProfile:'',
+      country:'',
+      jobLocation:[],
+     },
     };
-  }
+  }, methods: {
+      add(a,b,c){
+        return a + b -c ;
+      },
+      multiplier(){
+      return 5 * this.baseMultiplier
+     },
+     increment(){
+      this.counter += 1
+     },
+     decrement(){
+      this.counter -= 1
+     },
+     },
+     
 }
 </script>
