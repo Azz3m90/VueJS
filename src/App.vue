@@ -2,7 +2,8 @@
 
 <template>
 <h1>Full name: {{ firstName }} {{ lastName }}</h1>
-<h1>computed Full name: {{ firstName }} {{ lastName }}</h1>
+<h1>computed Full name: {{ fullName }}</h1>
+<button @click="changeFullName()">change name using setter and getter for computed values</button>
 <button @click="items.push({id:4,title:'mouse',price:75})">Add items</button>
 <h2>computed total : {{ total }}</h2>
 <h2>method total : {{ getTotal() }}</h2>
@@ -45,11 +46,21 @@ export default {
     getTotal(){
     console.log('getTotal Method called ')
           return this.items.reduce((total,curr) => (total = total + curr.price),0)
+  },
+  changeFullName(){
+    this.fullName = "Azzam Aziz"
   }
 },
   computed:{
-    fullName(){
-      return `${this.firstName} ${this.lastName} `
+    fullName:{
+      get(){
+        return `${this.firstName} ${this.lastName} `
+      },
+      set(value){
+        const names = value.split(' ')
+        this.firstName = names[0] 
+        this.lastName = names[1] 
+      }
     },
     total(){
        console.log('computed method is called')
