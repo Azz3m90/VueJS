@@ -66,7 +66,7 @@
   <div ><pre>
     {{ JSON.stringify(formValues, null,2) }}
   </pre></div>
-<form action="" method="post">
+<form action="" method="post" @submit="submitForm">
   <div>
     <label for="name">Name:</label>
     <input type="text" id="name" v-model="formValues.name "/>
@@ -82,7 +82,7 @@
       <option value="UAE">United Emarites</option>
       <option value="KSA">Saudi Kindom</option>
       <option value="BLE">Belgium</option>
-    </select>>
+    </select>
   </div>
   <div>
     <label for="job-location">Job Location:</label>
@@ -91,7 +91,36 @@
       <option value="UAE">United Emarites</option>
       <option value="KSA">Saudi Kindom</option>
       <option value="BLE">Belgium</option>
-    </select>>
+    </select>
+  </div>
+  <div>
+    <input type="checkbox"  id="remoteWork" v-model='formValues.remoteWork 'true-value="yes" false-value="no"/>
+   <label for="remoteWork">Open to remote Work?</label>
+  </div>
+    <div>
+      <label for="skillSet">skill set</label>
+    <input type="checkbox"  id="html" value="html" v-model='formValues.skillSet '/>
+    <label for="html" >html</label> 
+       <input type="checkbox"  id="css" value="css"  v-model='formValues.skillSet '/>
+    <label for="css" >css</label>
+        <input type="checkbox"  id="js" value="js"  v-model='formValues.skillSet '/>
+    <label  for="js" >js</label>
+   
+  </div>
+  <div>
+    <label for="yearsOfExperiense">years of Experiense</label>
+        <input type="radio"  
+        id="0-5" 
+        value="0-5"
+         v-model='formValues.yearsOfExperiense '/>
+        <label for="0-5">0-5</label>
+        <input type="radio"  id="5-15" value="5-15" v-model='formValues.yearsOfExperiense '/>
+        <label for="5-15">5-15</label>
+        <input type="radio"  id="15-20" value="15-20" v-model='formValues.yearsOfExperiense '/>
+        <label for="15-20">15-20</label>                
+  </div>
+  <div>
+    <button>submit</button>
   </div>
 </form>
 </template>
@@ -173,6 +202,10 @@ export default {
       summaryProfile:'',
       country:'',
       jobLocation:[],
+      //remoteWork:false,
+      remoteWork:'no',
+      skillSet:[],
+      yearsOfExperiense:'',
      },
     };
   }, methods: {
@@ -187,6 +220,11 @@ export default {
      },
      decrement(){
       this.counter -= 1
+     },
+     submitForm(event){
+      event.preventDefault();
+      console.log(this.formValues)
+
      },
      },
      
