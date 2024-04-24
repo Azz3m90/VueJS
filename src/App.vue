@@ -66,10 +66,15 @@
   <div ><pre>
     {{ JSON.stringify(formValues, null,2) }}
   </pre></div>
-<form action="" method="post" @submit="submitForm">
+<form action="" method="post" @submit.prevent="submitForm">
   <div>
     <label for="name">Name:</label>
-    <input type="text" id="name" v-model="formValues.name "/>
+    <input type="text" id="name" v-model.trim.lazy="formValues.name "/>
+  </div>
+    <div>
+    <label for="age">Age:</label>
+    <input 
+   @keyup.enter="submitForm" type="number" id="age" v-model.number="formValues.age "/>
   </div>
   <div>
     <label for="profile">Name:</label>
@@ -119,9 +124,9 @@
         <input type="radio"  id="15-20" value="15-20" v-model='formValues.yearsOfExperiense '/>
         <label for="15-20">15-20</label>                
   </div>
-  <div>
+  <!--<div>
     <button>submit</button>
-  </div>
+  </div>-->
 </form>
 </template>
 
@@ -206,6 +211,7 @@ export default {
       remoteWork:'no',
       skillSet:[],
       yearsOfExperiense:'',
+      age:null,
      },
     };
   }, methods: {
@@ -221,8 +227,8 @@ export default {
      decrement(){
       this.counter -= 1
      },
-     submitForm(event){
-      event.preventDefault();
+     submitForm(){
+      //event.preventDefault();
       console.log(this.formValues)
 
      },
