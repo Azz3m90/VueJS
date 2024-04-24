@@ -1,41 +1,61 @@
 
 
 <template>
-  <h1 v-once>{{ name }}</h1>
-<button @click="name = 'Ali'">change name </button>
-<h1 v-pre>{{ name }}</h1>
+<h1>Full name: {{ firstName }} {{ lastName }}</h1>
+<h1>computed Full name: {{ firstName }} {{ lastName }}</h1>
+<button @click="items.push({id:4,title:'mouse',price:75})">Add items</button>
+<h2>computed total : {{ total }}</h2>
+<h2>method total : {{ getTotal() }}</h2>
+<input type="text" v-model="country"/>
 </template>
 
-<style scoped>
-  .underline{
-    text-decoration: underline;
-  }
-  .danger{
-    background-color: red;
-  }
-    .success{
-    background-color: green;
-  }
-  .promoted{
-    font-style: italic;
-  }
-  .new{
-    color: olive;
-  }
-  .soldout{
-    color: red;
-  }
-  h1,h2,h3,h3{
-    display: block;
-  }
-</style>
 <script>
 export default {
   name:"App",
   data(){
     return {
-      name:"Azzam",
+      firstName:"Azzam",
+      lastName:"Ali",
+      items:[
+        {
+          id:1,
+          title:"laptop",
+          price:50,
+        },
+        {
+          id:2,
+          title:"headphone",
+          price:150,
+        },
+        {
+          id:3,
+          title:"PC",
+          price:250,
+        },
+      ],
+      country:''
+      
+    }
+  },
+  methods:{
+    getTotal(){
+    console.log('getTotal Method called ')
+          return this.items.reduce((total,curr) => (total = total + curr.price),0)
+  }
+},
+  computed:{
+    fullName(){
+      return `${this.firstName} ${this.lastName} `
+    },
+    total(){
+       console.log('computed method is called')
+      return this.items.reduce((total,curr) => (total = total + curr.price),0)
     }
   },
 }
 </script>
+
+
+<style scoped>
+
+</style>
