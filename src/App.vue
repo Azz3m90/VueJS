@@ -1,17 +1,16 @@
 
 
 <template>
-<h1>Full name: {{ firstName }} {{ lastName }}</h1>
-<h1>computed Full name: {{ fullName }}</h1>
-<button @click="changeFullName()">change name using setter and getter for computed values</button>
-<button @click="items.push({id:4,title:'mouse',price:75})">Add items</button>
-<h2>computed total : {{ total }}</h2>
-<h2>method total : {{ getTotal() }}</h2>
-<input type="text" v-model="country"/><br>
-<template v-for="item in items":key="item.id">
-  <h2 v-if="item.price > 100">{{ item.title }} {{ item.price }}</h2>
-</template>
-  <h2 v-for="item in expensiveItems">{{ item.title }} {{ item.price }}</h2>
+<h2>Volume Tracker(0-10)</h2>
+<h2>Current Volume - {{ volume }}</h2>
+<input type="text" v-model="movie">
+<input type="text" v-model="movieInfo.title">
+<input type="text" v-model="movieInfo.actor">
+<button @click="volume += 2">Increase</button>
+<button @click="volume -= 2">Decrease</button>
+<div>
+  <button @click="movieList = movieList.concat('new pushed movie')">Add Movie</button>
+</div>
 </template>
 
 <script>
@@ -19,57 +18,47 @@ export default {
   name:"App",
   data(){
     return {
-      firstName:"Azzam",
-      lastName:"Ali",
-      items:[
-        {
-          id:1,
-          title:"laptop",
-          price:50,
-        },
-        {
-          id:2,
-          title:"headphone",
-          price:150,
-        },
-        {
-          id:3,
-          title:"PC",
-          price:250,
-        },
-      ],
-      country:''
-      
+      volume : 0 ,
+      movie:'Batman',
+      movieInfo:{
+        title:'',
+        actor:''
+      },
+      movieList:['AzzamMovie', 'Allam Movie']
     }
   },
   methods:{
-    getTotal(){
-    console.log('getTotal Method called ')
-          return this.items.reduce((total,curr) => (total = total + curr.price),0)
-  },
-  changeFullName(){
-    this.fullName = "Azzam Aziz"
-  }
+
 },
   computed:{
-    fullName:{
-      get(){
-        return `${this.firstName} ${this.lastName} `
-      },
-      set(value){
-        const names = value.split(' ')
-        this.firstName = names[0] 
-        this.lastName = names[1] 
-      }
-    },
-    total(){
-       console.log('computed method is called')
-      return this.items.reduce((total,curr) => (total = total + curr.price),0)
-    },
-    expensiveItems(){
-      return this.items.filter(item =>item.price > 100)
+    
+},
+watch:{
+  volume(newValue, oldValue){
+    if(newValue > oldValue &&newValue === 16){
+      alert('hearing high level volume for a long time may damage your hearing')
     }
   },
+  movie:{
+    handler(newValue){
+    console.log(`API has been called to fetch the movie name : ${newValue}`)},
+    immediate:true,
+   },
+   movieInfo:
+   {
+    handler(newValue){
+     console.log(`API has been called to fetch the movie name : ${newValue.title} and actor: ${newValue.actor}`)
+    },
+    deep:true
+  },
+  movieList:
+   {
+    handler(newValue){
+     console.log(`movieList Upldated : ${newValue} `)
+    },
+    //deep:true
+  },
+}
 }
 </script>
 
