@@ -1,8 +1,11 @@
 <template>
- <h2>Hello Azzam</h2>
+ <h2>Hello {{ name }} a.k.a {{ heroName }}</h2><br>
 </template>
 <script>
 export default {
  name:'Greetings',
+ props:['name', 'heroName']
 }
 </script>
+<style scoped>
+</style>

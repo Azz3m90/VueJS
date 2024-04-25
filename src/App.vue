@@ -1,7 +1,10 @@
 
 
 <template>
-<Greetings />
+<Greetings name="Azzam" heroName="Batman"/>
+<Greetings name="Allam" heroName="Superman"/>
+<Greetings name="Abeer" heroName="Wonder Woman "/>
+<Greetings :name="name" :heroName="channel"/>
 </template>
 
 <script>
@@ -13,7 +16,8 @@ export default {
   },
   data(){
     return {
-    
+      name:'Eng.Azzam',
+      channel:'Azzam Aziz Ali'
     }
   },
   methods:{
