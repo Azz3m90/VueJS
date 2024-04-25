@@ -8,41 +8,46 @@
 <!-- <Article id="my-article" :likes="50" :isPublished="true" /> 
 <h1>App Component username  - {{ name }}</h1>
 <ComponentC />-->
-<button @click="showPopup = true"> Show Popup</button>
-<Popup v-show="showPopup" @close="closePopup"/>
+<!-- <button @click="showPopup = true"> Show Popup</button>
+<Popup v-show="showPopup" @close="closePopup"/> 
+<input type="text" v-model="name" />-->
+<Input  v-model="name"/>
 </template>
 
 <script>
 //import Greetings from './components/Greetings.vue';
 /* import Article from './components/Article.vue' */
 /* import ComponentC from './components/ComponentC.vue'; */
-import Popup from './components/Popup.vue';
+/* import Popup from './components/Popup.vue'; */
+import Input from './components/Input.vue';
 export default {
   name:"App",
   components:{
     //Greetings,
     //Article,
     //ComponentC,
-    Popup,
+    /* Popup, */
+    Input,
   },
   data(){
     return {
      // name:'Eng.Azzam Aziz Ali',
       //channel:'Azzam Aziz Ali',
-      showPopup:false,
+      /* showPopup:false, */
+      name:''
     }
   },
-  provide(){
+/*   provide(){
     return {
       username: this.name,
-    }
-  },
+    } 
+  },*/
   
   methods:{
-    closePopup(name){
+/*     closePopup(name){
       this.showPopup = false
       console.log('name sent by a child component is : ',name)
-    }
+    } */
 },
   computed:{
     
