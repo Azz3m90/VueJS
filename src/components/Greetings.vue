@@ -1,5 +1,5 @@
 <template>
- <h2>Hello {{ name }} a.k.a {{ heroName }}</h2><br>
+ <h2>Hello {{ name }} a.k.a {{ heroName }}</h2>
 </template>
 <script>
 export default {
