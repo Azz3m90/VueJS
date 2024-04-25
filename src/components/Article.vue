@@ -1,8 +1,12 @@
 <template>
- <h2>Articla component</h2>
- <h2 >{{ title }}</h2>
- <h2>Number of likes: {{ likes }}</h2>
- <h2>is published: {{ isPublished ? "Yes" : "No" }}</h2>
+ <div>
+
+   <h2>Articla component</h2>
+   <h2 v-bind="$attrs">{{ title }}</h2>
+   <h2>Number of likes: {{ likes }}</h2>
+   <h2>is published: {{ isPublished ? "Yes" : "No" }}</h2>
+ </div>
+
 </template>
 <script>
 export default {
@@ -15,7 +19,9 @@ export default {
   },
   likes:Number,
   isPublished:Boolean
- }
+ },
+
+ inheritAttrs:false,
 }
 </script>
 <style >

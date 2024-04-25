@@ -5,7 +5,7 @@
  <Greetings name="Allam" heroName="Superman"/>
 <Greetings name="Abeer" heroName="Wonder Woman "/>
 <Greetings :name="name" :heroName="channel"/> -->
-<Article  :likes="50" :isPublished="true" />
+<Article id="my-article" :likes="50" :isPublished="true" />
 </template>
 
 <script>
@@ -23,6 +23,7 @@ export default {
       channel:'Azzam Aziz Ali'
     }
   },
+  
   methods:{
 
 },
