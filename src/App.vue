@@ -1,53 +1,44 @@
 
 
 <template>
-<!--<Greetings name="Azzam" heroName="Batman"/>
- <Greetings name="Allam" heroName="Superman"/>
-<Greetings name="Abeer" heroName="Wonder Woman "/>
-<Greetings :name="name" :heroName="channel"/> -->
-<!-- <Article id="my-article" :likes="50" :isPublished="true" /> 
-<h1>App Component username  - {{ name }}</h1>
-<ComponentC />-->
-<!-- <button @click="showPopup = true"> Show Popup</button>
-<Popup v-show="showPopup" @close="closePopup"/> 
-<input type="text" v-model="name" />-->
-<Input  v-model="name"/>
+  <Card></Card>
+  <Card >Card Content</Card>
+  <Card >
+    <img src="https://picsum.photos/200" alt="photos">
+  </Card>
+  <Card >
+    <h2>Card Content</h2>
+  </Card>
+  <Card>
+    <template v-slot:header>
+      <h3>header</h3>
+    </template>
+    <template v-slot:default>
+        <img src="https://picsum.photos/200" alt="photos">
+    </template>
+    <template v-slot:footer>
+      <button>view details</button>
+    </template>
+  </Card>
 </template>
 
 <script>
-//import Greetings from './components/Greetings.vue';
-/* import Article from './components/Article.vue' */
-/* import ComponentC from './components/ComponentC.vue'; */
-/* import Popup from './components/Popup.vue'; */
-import Input from './components/Input.vue';
+import Card from './components/Card.vue';
+
 export default {
   name:"App",
   components:{
-    //Greetings,
-    //Article,
-    //ComponentC,
-    /* Popup, */
-    Input,
+    Card
   },
   data(){
     return {
-     // name:'Eng.Azzam Aziz Ali',
-      //channel:'Azzam Aziz Ali',
-      /* showPopup:false, */
-      name:''
+
     }
   },
-/*   provide(){
-    return {
-      username: this.name,
-    } 
-  },*/
+
   
   methods:{
-/*     closePopup(name){
-      this.showPopup = false
-      console.log('name sent by a child component is : ',name)
-    } */
+
 },
   computed:{
     
