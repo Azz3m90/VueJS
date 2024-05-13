@@ -1,53 +1,31 @@
-
-
 <template>
-   <NameList>
-    <template v-slot:default="slotProps">
-      {{ slotProps.firstName }}
-    </template>
-   </NameList>
-   <NameList>
-    <template v-slot:default="slotProps">
-        {{ slotProps.lastName }},{{ slotProps.firstName }}
-    </template>
-   </NameList>
-   <NameList>
-    <template v-slot:default="slotProps">
-      {{ slotProps.firstName }} , {{ slotProps.lastName }}
-    </template>
-   </NameList>
+  <h4>Parent Component</h4>
+  <ChildComponent />
 </template>
 
 <script>
-import NameList from './components/NameList.vue';
+import ChildComponent from '@/components/ChildComponent.vue'
 
 export default {
-  name:"App",
-  components:{
-    NameList
+  name: 'App',
+  components: {
+    ChildComponent,
   },
-  data(){
+  data() {
     return {
-
+      name: '',
     }
   },
 
-  
-  methods:{
-
-},
-  computed:{
-    
-},
-watch:{
-
-}
+  methods: {},
+  computed: {},
+  watch: {},
 }
 </script>
 
-
-<style >
-html, body {
+<style>
+html,
+body {
   height: 100vh;
   display: block;
   justify-content: center;
@@ -60,8 +38,15 @@ html, body {
   display: block;
 }
 
-h1, h2, h3, div, p {
+h1,
+h2,
+h3,
+div,
+p {
   display: block;
   margin: 10px 0; /* Adjust margin as needed */
+}
+h4 {
+  color: olive;
 }
 </style>
